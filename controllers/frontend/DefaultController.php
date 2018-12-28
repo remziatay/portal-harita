@@ -15,4 +15,8 @@ class DefaultController extends \kouosl\base\controllers\frontend\BaseController
     {
         return $this->render('_index');
     }
+
+    public function actionBoyut($zoom){
+        return $this->render('index', ['zoom' => $zoom]);
+    }
 }
