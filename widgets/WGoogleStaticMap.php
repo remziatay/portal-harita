@@ -18,8 +18,6 @@ class WGoogleStaticMap extends \yii\bootstrap\Widget {
 	public $width = null;
 	public $height = null;
 	public $markers = array();
-	public $linkOptions = array();
-	public $linkUrl = null;
 	public $apiKey = null;
 	private $_baseUrl = 'http://maps.google.com/maps/api/staticmap?';
 
@@ -43,13 +41,7 @@ class WGoogleStaticMap extends \yii\bootstrap\Widget {
 		$this->imageOptions['width'] = $this->width;
 		$this->imageOptions['height'] = $this->height;
 
-		if (is_null($this->linkUrl))
-		{
-			echo Html::img($url,['alt'=>$this->alt,$this->imageOptions]);
-		} else
-		{
-			echo Html::a(Html::img($url,['alt'=>$this->alt,'srcset'=>$this->imageOptions]),$this->linkUrl,$this->linkOptions);
-		}
+		echo Html::img($url,['alt'=>$this->alt,$this->imageOptions]);
 		
 	}
 

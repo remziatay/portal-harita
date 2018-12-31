@@ -8,11 +8,22 @@ $data['title'] = Html::encode($this->title);
 
 
 
-Portlet::begin(['title' => $this->title]);
+//Portlet::begin(['title' => $this->title]);
 
-echo $this->render('index', ['zoom' => 16]);
+$address = \Yii::$app->db->createCommand('SELECT * FROM `last_address` WHERE `user_id` = ' . Yii::$app->user->id)->queryOne();
 
-Portlet::end();
+if($address == false && @file_get_contents("defaultAddress.txt") != false){  
+    $centerID = file_get_contents("defaultAddress.txt");
+    $address = \Yii::$app->db->createCommand('SELECT * FROM `address` WHERE `id` = '.$centerID)->queryOne();
+}
+if ($address == false) {
+    $address['address'] = "Kocaeli Üniversitesi";
+    $address['zoom'] = 16;
+}
+
+echo $this->render('index', ['attrs' => ['center' => $address['address'], 'zoom' => $address['zoom']]]);
+
+//Portlet::end();
 
 
 
