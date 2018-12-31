@@ -51,7 +51,7 @@ var_dump($users);*/
                         'zoom'=>$attrs['zoom'],
                         'width'=>500,
                         'height'=>400,
-                        'apiKey'=>'AIzaSyC98ECCBuHpiKsMYqHVPcre7ldrTQU9JzA'
+                        'apiKey'=>'GİZLİ'
                     ]);?>
                 </div>
                 <div class="col-md-4">
