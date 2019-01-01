@@ -1,12 +1,20 @@
-<?= $this->title = 'Modül çalışıyor.'; ?>
+<?php 
+use kouosl\harita\widgets\Pjax;
+use kouosl\harita\widgets\Admin;
+use yii\bootstrap\Alert;
+
+$this->title = 'Admin Paneli';?>
+
 <div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Kou Osl Yii2 App</h1>
-
-        <p class="lead">Örnek uygulamayı başarılı bir şekilde çalıştırdınız.</p>
-
-        <p><a class="btn btn-lg btn-success" href="#">Modüller ve konfürgasyon!</a></p>
-    </div>
-
+    <?php 
+    Pjax::begin(['scrollTo' => false ]);
+        if(isset($errorMsg) && isset($errorType))
+            echo Alert::widget([
+                'options' => ['class' => $errorType,],
+                'body' => $errorMsg
+                ]);
+        echo Admin::widget(['attrs' => $attrs]);
+    Pjax::end(); 
+    ?>
 </div>
+

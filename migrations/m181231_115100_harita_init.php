@@ -2,12 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Class m181231_115100_harita_init
- */
 class m181231_115100_harita_init extends Migration
 {
-
     public function up()
     {
         $tableOptions = null;
@@ -33,8 +29,8 @@ class m181231_115100_harita_init extends Migration
         ], $tableOptions);
 
         $this->createTable('default_address', [
-            'address_id' => $this->integer()->notNull(),
             'name' => $this->string(60)->notNull(),
+            'address_id' => $this->integer()->notNull(),
         ], $tableOptions);
 
         $this->addForeignKey(
@@ -79,6 +75,14 @@ class m181231_115100_harita_init extends Migration
             'id',
             'CASCADE'
         );
+
+        $this->createIndex(
+            'idx-default_address-name',
+            'default_address',
+            'name',
+            1
+        );
+
     }
 
     public function down()
@@ -105,6 +109,11 @@ class m181231_115100_harita_init extends Migration
 
         $this->dropForeignKey(
             'fk-default_address-address_id',
+            'default_address'
+        );
+
+        $this->dropIndex(
+            'idx-default_address-name',
             'default_address'
         );
 

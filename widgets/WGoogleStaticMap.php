@@ -1,7 +1,7 @@
 <?php
 
 // @author Alex Muir
-// @yii2-bootstrap implementor Remzi Atay
+// @yii2-bootstrap implementor and editor Remzi Atay
 
 namespace kouosl\harita\widgets;
 

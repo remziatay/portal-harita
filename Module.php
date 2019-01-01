@@ -9,9 +9,6 @@ use yii\filters\auth\QueryParamAuth;
 use yii\web\HttpException;
 
 
-/**
- * harita module definition class
- */
 class Module extends \kouosl\base\Module
 {
     public $controllerNamespace = '';
@@ -19,8 +16,6 @@ class Module extends \kouosl\base\Module
     public function init()
     {
         parent::init();
-
-        // custom initialization code goes here
     }
     public function behaviors()
     {
